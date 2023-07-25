@@ -39,10 +39,15 @@ const Pedido = mongoose.model("Pedido", mongoose.Schema({
 
 const Ingredientes = mongoose.model("Ingredientes", mongoose.Schema({
     nome: { type: String, required: true },
-    quantidade: { type: Number, required: true },
-    preco: { type: Number, required: true },
+    quantidade: { type: String, required: true },
+    marca: { type: String, required: true },
 }));
 
+const Financeiro = mongoose.model("Financeiro", mongoose.Schema({
+    identificacao: { type: String, required: true },
+    quantia: { type: String, required: true },
+    status: { type: String, required: true }
+}));
 
 async function conectarAoMongoDB(){
     try{
@@ -194,7 +199,32 @@ app.post("/ingredientes", async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
+//Financeiro
+app.post("/financeiro", async (req, res) => {
+    try{
+        const financeiro = new Financeiro(req.body);
+        await financeiro.save();
+
+        const financeiros = await Financeiro.find();
+        res.json(financeiro);
+    }
+    catch(error){
+        res.json(error);
+    }
+});
+
+app.get("/financeiro", async (req, res) => {
+    try{
+        const financeiros = await Financeiro.find();
+        res.json(financeiros);
+    }
+    catch(error){
+        res.json(error);
+    }
+});
+
+
+app.listen(3001, () => {
     try{
         conectarAoMongoDB();
         console.log("Servidor iniciado!");
