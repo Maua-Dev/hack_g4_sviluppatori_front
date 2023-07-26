@@ -44,7 +44,6 @@ function AdminFinanceiro(){
         setInputIdentificacao("");
         setInputQuantia("");
         setInputStatus("");
-        console.log(mensagem)
         axios.post("http://localhost:3001/financeiro", mensagem);
         closeModal();
     }
