@@ -1,5 +1,6 @@
 import React from 'react'
-import './stylesheets/Login.css';
+import style from './stylesheets/login.module.css';
+import axios from "axios";
 
 function Login(){
     const [inputUsername, setInputUsername] = React.useState("");
@@ -58,8 +59,8 @@ function Login(){
     return(
         <>
         <div>
-            <nav className="navbar">
-                <a className="navbar-brand" id="header" href="/">Sviluppatori Pizzaria</a>
+            <nav className={style["navbar"]}>
+                <a className={style["navbar-brand"]} id="header" href="/">Sviluppatori Pizzaria</a>
             </nav>
         </div>
         <div className="container-fluid m-md-4 m-lg-5">
@@ -70,8 +71,8 @@ function Login(){
                     </input>
                     <input className="input-info mt-4 me-4 ms-0 d-block" value={inputSenha} onChange={(event) => setInputSenha(event.target.value)} type="password" id="senha" placeholder='senha'>
                     </input>
-                    <button className="btn mt-5 me-4 ms-0 mb-4 d-block float-end" type="submit" onClick={() => cadastrarUsuario()}>Signup</button>
-                    <button className="btn mt-5 me-4 ms-0 mb-4 d-block float-end" type="submit" onClick={() => entrarUsuario()}>Login</button>
+                    <button className="btn mt-5 me-4 ms-0 mb-4 d-block float-end" id={style["btn"]} type="submit" onClick={() => cadastrarUsuario()}>Signup</button>
+                    <button className="btn mt-5 me-4 ms-0 mb-4 d-block float-end" id={style["btn"]} type="submit" onClick={() => entrarUsuario()}>Login</button>
                 </div>
                 <div className="col-md-4 m-md-4 m-lg-5 text-center">
                     <h5 className='d-inline titulo'>Sviluppatori Pizzaria</h5>

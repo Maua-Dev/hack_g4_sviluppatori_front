@@ -1,5 +1,5 @@
 import React from 'react'
-
+import style from "./stylesheets/admin.module.css"
 
 function AdminFeedback(){
     return(
@@ -12,7 +12,7 @@ function AdminFeedback(){
             <div class="container-fluid m-0 p-0">
                 <div className="row m-0 p-0">
                     <div className="col-md-3 m-0 p-0">
-                        <div id="botoes">
+                        <div id={style["botoes"]}>
                             <a href="/admin/ingredientes">
                             <button className="d-block mb-3 pe-5" id="botao-estoque">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="me-2 bi bi-file-spreadsheet-fill" viewBox="0 0 16 16">
@@ -37,7 +37,7 @@ function AdminFeedback(){
                             </button>
                         </div>
                     </div>
-                    <div className="col-12 col-md-8 me-1" id="tabela">
+                    <div className="col-12 col-md-8 me-1" id={style["tabela"]}>
                         <table>
                             <thead>
                                 <tr>
@@ -47,26 +47,6 @@ function AdminFeedback(){
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>14678</td>
-                                    <td>18/06/2023</td>
-                                    <td>A pizza estava...</td>
-                                </tr>
-                                <tr>
-                                    <td>14789</td>
-                                    <td>18/06/2023</td>
-                                    <td>O atendimento...</td>
-                                </tr>
-                                <tr>
-                                    <td class="add-button">
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi teste bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-                                                <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
-                                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-                                            </svg>
-                                        </button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
 
