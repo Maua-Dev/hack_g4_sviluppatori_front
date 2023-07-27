@@ -1,6 +1,3 @@
-*{
-  color: black;
-}
 body {
   font-family: Arial, sans-serif;
   background-color: #3C973F;
@@ -51,6 +48,7 @@ main {
 
 .card {
   background-color: #FFFFFF;
+  color: #3C973F;
   text-decoration: none;
   border-radius: 5px;
   border: 1px solid #3C973F;
@@ -60,18 +58,21 @@ main {
   padding: 20px;
 }
 
+.card-body{
+  color: #3C973F;
+}
+
 .card:hover {
   background-color: #2A6822;
   transform: scale(1.05);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.card a {
-  color: #3C973F;
-  text-decoration: none;
+.card-body:hover{
+  color: white;
 }
 
-.card-title {
+#card-title {
   font-size: 24px;
   margin-top: 0;
 }

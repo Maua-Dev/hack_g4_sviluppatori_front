@@ -1,5 +1,5 @@
 import React from 'react'
-import "./stylesheets/admin.css"
+import style from "./stylesheets/admin.module.css"
 import axios from "axios";
 import { Modal, Button } from 'react-bootstrap';
 
@@ -88,7 +88,7 @@ function Ingredientes(){
             <div className="container-fluid m-0 p-0">
                 <div className="row m-0 p-0">
                     <div className="col-md-3 m-0 p-0">
-                        <div id="botoes">
+                        <div id={style["botoes"]}>
                             <button className="d-block mb-3 pe-5" id="botao-estoque" disabled="disabled" style={{backgroundColor: "#72F478"}}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="me-2 bi bi-file-spreadsheet-fill" viewBox="0 0 16 16">
                                     <path d="M12 0H4a2 2 0 0 0-2 2v4h12V2a2 2 0 0 0-2-2zm2 7h-4v2h4V7zm0 3h-4v2h4v-2zm0 3h-4v3h2a2 2 0 0 0 2-2v-1zm-5 3v-3H6v3h3zm-4 0v-3H2v1a2 2 0 0 0 2 2h1zm-3-4h3v-2H2v2zm0-3h3V7H2v2zm4 0V7h3v2H6zm0 1h3v2H6v-2z"/>
@@ -113,7 +113,7 @@ function Ingredientes(){
                             </a>
                         </div>
                     </div>
-                    <div className="col-12 col-md-8 me-1" id="tabela">
+                    <div className="col-12 col-md-8 me-1" id={style["tabela"]}>
                         <table>
                             <thead>
                                 <tr>
@@ -131,7 +131,7 @@ function Ingredientes(){
                                 </tr>
                             ))}
                                 <tr>
-                                    <td className="add-button" >
+                                    <td className={style["add-button"]} >
                                         <button onClick={initModal}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi teste bi-file-earmark-arrow-down" viewBox="0 0 16 16">
                                                 <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>

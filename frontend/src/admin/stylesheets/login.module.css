@@ -1,6 +1,27 @@
 
 *{
     font-family: cursive;
+    color: white;
+}
+
+.navbar {
+    background-color: #3C973F;
+    padding: 10px;
+    text-align: center;
+    font-family: cursive;
+  
+  }
+  
+.navbar-brand {
+color: white;
+font-weight: bold;
+font-size: 32px;
+text-decoration: none;
+}
+
+.navbar-brand:hover {
+color: #FFFFFF;
+text-decoration: none;
 }
 h5{
     font-size: 40px;
@@ -21,6 +42,10 @@ input::placeholder{
     color: white;
     font-size: 24px;
 }
+input:hover{
+    background-color: #3C973F;
+    border: 1px solid white;
+}
 
 @media (max-width: 992px){
     input{
@@ -33,11 +58,11 @@ input::placeholder{
         width: 100%;
     }
 }
-.btn{
+#btn{
     background-color: #003929;
     color: white;
 }
-.btn:hover{
+#btn:hover{
     background-color: #12361B;
 }
 .texto{
