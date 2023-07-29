@@ -1,48 +1,64 @@
-import style from './inicio.module.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Navbar from 'react-bootstrap/Navbar'
+import {Body, Main} from './styled-components/Body.jsx';
+import {Text, Header, H1} from './styled-components/Text.jsx';
+import {NavbarD, NavbarBrandD} from './styled-components/Navbar.jsx';
+import {CardD, CardTitleD, CardBodyD} from './styled-components/Card.jsx';
+
+
 function Inicio() {
   return (
-    
-    <div className="App"> 
-    <nav className={style["navbar"]}>
-      <a className={style["navbar-brand"]} id={style["header"]} href="/">Sviluppatori Pizzaria</a>
-    </nav> 
-    <header>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12 text-center">
-            <h1 className="display-3">A melhor pizzaria de <b>SCS</b></h1>
-            <p className={style["lead"]}>Escolha uma das opções abaixo: </p>
-          </div>
-        </div>
-      </div>
-    </header>
-    <main>
-      <div id="direcoes">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 text-center d-flex justify-content-center">
-              <div className={style["card"]}>
-                <a href="/cardapio">
-                  <div className={style["card-body"]}>
-                    <h6 id={style["card-title"]}>Cliente</h6>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div className="col-md-6 text-center d-flex justify-content-center">
-              <div className={style["card"]}>
-                <a href="/login">
-                  <div className={style["card-body"]}>
-                    <h6 className="card-title m-0 p-0" id={style["card-title"]}>Administrador</h6>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
+    <Body>
+    <Navbar>
+      <NavbarD>
+      <Navbar.Brand href="/">
+        <NavbarBrandD>
+        Sviluppatori Pizzaria
+        </NavbarBrandD>
+      </Navbar.Brand>
+      </NavbarD>
+    </Navbar> 
+    <Header>
+      <Container>
+        <Row>
+          <Col md={12} >
+            <H1>A melhor pizzaria de <b>SCS</b></H1>
+            <Text>Escolha uma das opções abaixo: </Text>
+          </Col>
+        </Row>
+      </Container>
+    </Header>
+    <Main>
+        <Container>
+          <Row>
+            <Col md={6}>
+              <a href="/cardapio">
+              <CardD>
+                      <CardBodyD>
+                          <CardTitleD>
+                            Cliente
+                          </CardTitleD>
+                      </CardBodyD>
+                  </CardD>
+              </a>
+            </Col>
+            <Col md={6}>
+            <a href="/cardapio">
+                  <CardD>
+                      <CardBodyD>
+                          <CardTitleD>
+                            Funcionário
+                          </CardTitleD>
+                      </CardBodyD>
+                  </CardD>
+              </a>
+            </Col>
+          </Row>
+        </Container>
+    </Main>
+  </Body>
   );
 }
 

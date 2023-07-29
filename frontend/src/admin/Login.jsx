@@ -19,13 +19,13 @@ function Login(){
                 senha: inputSenha,
             }  
         }
-        setInputUsername("");
-        setInputSenha("");
         axios.post("http://localhost:3001/login", mensagem).then((res) => {
             document.location.href = "/admin/ingredientes";
         }).catch((err) => {
             alert("Esse usuário não existe!")
         });
+        setInputUsername("");
+        setInputSenha("");
     }
     
     function cadastrarUsuario(){
@@ -41,8 +41,6 @@ function Login(){
                 senha: inputSenha,
             }  
         }
-        setInputUsername("");
-        setInputSenha("");
         axios.post("http://localhost:3001/signup", mensagem).then((res) => {
             if(res.data !== ""){
                 alert("Esse usuário já existe!")
@@ -54,6 +52,8 @@ function Login(){
         }).catch((err) => {
             alert("Erro ao cadastrar usuário")
         })
+        setInputUsername("");
+        setInputSenha("");
     }
 
     return(
