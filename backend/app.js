@@ -60,12 +60,12 @@ const Pedido = mongoose.model("Pedido", mongoose.Schema({
 const Ingredientes = mongoose.model("Ingredientes", mongoose.Schema({
     nome: { type: String, required: true },
     quantidade: { type: String, required: true },
-    marca: { type: String, required: true },
+    preco: { type: Number, required: true },
 }));
 
 const Financeiro = mongoose.model("Financeiro", mongoose.Schema({
     identificacao: { type: String, required: true },
-    quantia: { type: String, required: true },
+    quantia: { type: Number, required: true },
     status: { type: String, required: true }
 }));
 
