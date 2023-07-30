@@ -12,6 +12,8 @@ import GarcomPedidos from './garcom/GarcomPedidos';
 import GarcomMesas from './garcom/GarcomMesas';
 import PizzaioloPedidos from './pizzaiolo/PizzaioloPedidos';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MesasRecepcionista from './recepcionista/MesasRecepcionista';
+import PedidosRecepcionista from './recepcionista/PedidosRecepcionista';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -27,6 +29,8 @@ root.render(
     <Route path="/garcom/pedidos" element={<GarcomPedidos />} />
     <Route path="/garcom/mesas" element={<GarcomMesas />} />
     <Route path="/pizzaiolo/pedidos" element={<PizzaioloPedidos />} />
+    <Route path="/recepcionista/mesas" element={<MesasRecepcionista />} />
+    <Route path="/recepcionista/pedidos" element={<PedidosRecepcionista />} />
   </Routes>
   </BrowserRouter>
   

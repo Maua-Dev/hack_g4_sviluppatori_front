@@ -13,11 +13,11 @@ function Inicio() {
     <Body>
     <Navbar>
       <NavbarD>
-      <Navbar.Brand href="/">
-        <NavbarBrandD>
-        Sviluppatori Pizzaria
-        </NavbarBrandD>
-      </Navbar.Brand>
+        <Navbar.Brand href="/">
+          <NavbarBrandD>
+          Sviluppatori Pizzaria
+          </NavbarBrandD>
+        </Navbar.Brand>
       </NavbarD>
     </Navbar> 
     <Header>
@@ -35,24 +35,24 @@ function Inicio() {
           <Row>
             <Col md={6}>
               <a href="/cardapio">
-              <CardD>
-                      <CardBodyD>
-                          <CardTitleD>
-                            Cliente
-                          </CardTitleD>
-                      </CardBodyD>
-                  </CardD>
+                <CardD>
+                  <CardBodyD>
+                      <CardTitleD>
+                        Cliente
+                      </CardTitleD>
+                  </CardBodyD>
+                </CardD>
               </a>
             </Col>
             <Col md={6}>
-            <a href="/cardapio">
-                  <CardD>
-                      <CardBodyD>
-                          <CardTitleD>
-                            Funcionário
-                          </CardTitleD>
-                      </CardBodyD>
-                  </CardD>
+            <a href="/login">
+                <CardD>
+                  <CardBodyD>
+                      <CardTitleD>
+                        Funcionário
+                      </CardTitleD>
+                  </CardBodyD>
+                </CardD>
               </a>
             </Col>
           </Row>
