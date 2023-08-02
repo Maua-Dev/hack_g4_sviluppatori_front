@@ -5,12 +5,32 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+function authenticateToken(req, res, next) {
+    const token = req.headers["authorization"] && req.headers["authorization"].split(" ")[1];
+
+    if (!token) {
+        return res.status(401).json({ message: "Nenhum token foi inserido!" });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ message: "Este token é inválido!" });
+        }
+        req.userId = decoded.userId;
+        next();
+    });
+}
+
+app.get("/login", authenticateToken, (req, res) => {
+    res.json({ message: "This is a protected route", userId: req.userId });
+});
 
 const Produto = mongoose.model("Produto", mongoose.Schema({
     nome: { type: String, required: true },
@@ -20,9 +40,9 @@ const Produto = mongoose.model("Produto", mongoose.Schema({
 
 
 const Usuario = mongoose.model("Usuario", mongoose.Schema({
-    username: { type: String, required: true },
+    username: { type: String, required: true, unique: true},
     senha: { type: String, required: true },
-}));
+}).plugin(uniqueValidator));
 
 
 const Mesa = mongoose.model("Mesa", mongoose.Schema({
@@ -39,9 +59,16 @@ const Pedido = mongoose.model("Pedido", mongoose.Schema({
 
 const Ingredientes = mongoose.model("Ingredientes", mongoose.Schema({
     nome: { type: String, required: true },
-    quantidade: { type: Number, required: true },
+    quantidade: { type: String, required: true },
     preco: { type: Number, required: true },
 }));
+
+const Financeiro = mongoose.model("Financeiro", mongoose.Schema({
+    identificacao: { type: String, required: true },
+    quantia: { type: Number, required: true },
+    status: { type: String, required: true }
+}));
+
 
 
 async function conectarAoMongoDB(){
@@ -109,13 +136,18 @@ app.post("/login", async (req, res) => {
     const user = await Usuario.findOne({ username: username });
 
     if(!user){
-        res.status(401).json(mensagem("Usuário não encontrado!"));
+        res.status(401);
     }
     const compararSenha = await bcrypt.compare(senha, user.senha);
 
     if(!compararSenha){
-        res.status(401).json(mensagem("Senha incorreta!"));
+        res.status(401);
     }
+    
+    const token = jwt.sign({ username: username }, process.env.JWT_SECRET,{
+        expiresIn: "1h",
+    });
+    console.log(token)
     res.status(201).end();
 });
 
@@ -194,7 +226,32 @@ app.post("/ingredientes", async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
+//Financeiro
+app.post("/financeiro", async (req, res) => {
+    try{
+        const financeiro = new Financeiro(req.body);
+        await financeiro.save();
+
+        const financeiros = await Financeiro.find();
+        res.json(financeiro);
+    }
+    catch(error){
+        res.json(error);
+    }
+});
+
+app.get("/financeiro", async (req, res) => {
+    try{
+        const financeiros = await Financeiro.find();
+        res.json(financeiros);
+    }
+    catch(error){
+        res.json(error);
+    }
+});
+
+
+app.listen(3001, () => {
     try{
         conectarAoMongoDB();
         console.log("Servidor iniciado!");
