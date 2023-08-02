@@ -28,13 +28,11 @@ function Ingredientes(){
     const [inputQuantidade, setInputQuantidade] = React.useState("");
     const [inputPreco, setInputPreco] = React.useState("");
 
-     React.useEffect(()=>{
+    React.useEffect(()=>{
         const resposta =  axios.get("http://localhost:3001/ingredientes");
         resposta.then((dados) => {
             setIngredientes(dados.data);
-        }
-        );
-    }, []);
+        })});
 
     function createIngredientes(){
         let mensagem = {}

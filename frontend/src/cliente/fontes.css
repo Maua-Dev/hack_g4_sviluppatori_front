@@ -1,0 +1,27 @@
+@font-face{
+    font-family: "GreatVibes-Regular";
+    src: url("./fonts/GreatVibes-Regular.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face{
+    font-family: "Tangerine-Bold";
+    src: url("./fonts/Tangerine-Bold.ttf");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face{
+    font-family: "Tangerine-Regular";
+    src: url("./fonts/Tangerine-Regular.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body{
+    font-family: "GreatVibes-Regular";
+    color: #ffffff;
+    background-color: #317E39;
+    margin: 0;
+    padding: 0;
+}

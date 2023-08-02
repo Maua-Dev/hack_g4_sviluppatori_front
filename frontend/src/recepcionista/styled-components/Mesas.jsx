@@ -6,7 +6,7 @@ const MesaDiv = style.div`
     background-color: #095C2E;
     border: 3px solid #f6f6f6; 
     border-radius: 50px;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     margin-left: 2.5rem;
     padding-left: 0.5rem;
     padding-top: 0.5rem;

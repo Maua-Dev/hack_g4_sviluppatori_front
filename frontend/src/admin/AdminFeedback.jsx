@@ -18,7 +18,7 @@ function AdminFeedback(){
             setFeedback(dados.data);
     })});
     return(
-    <Body>
+        <Body>
             <Navbar>
                     <NavbarD>
                     <Navbar.Brand href="/">

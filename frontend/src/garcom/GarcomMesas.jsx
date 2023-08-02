@@ -1,14 +1,21 @@
-import react from 'react';
+import React from 'react';
 import {Body} from '../styled-components/Body';
-import {Container, Row, Col, Card} from 'react-bootstrap';
+import {Container, Row, Col, Card, Button} from 'react-bootstrap';
 import {BotoesDiv, Botao, Redirecionar} from '../recepcionista/styled-components/Botoes';
-import {Pedido} from '../recepcionista/styled-components/Pedidos';
-
+import axios from 'axios';
 
 
 function GarcomMesas(){
+    const [mesas, setMesas] = React.useState([]);
+
+    React.useEffect(() => {
+        axios.get('http://localhost:3001/mesas')
+        .then((response) => {
+            setMesas(response.data);
+        })});
+
     return(
-<Body>
+        <Body>
             <Container fluid>
                 <Row>
                     <Col xs={2}  style={{paddingLeft: "0px"}}>
@@ -21,8 +28,9 @@ function GarcomMesas(){
                             </Botao>
                         </BotoesDiv>
                     </Col> 
-                    <Col xs={3}>
-                        <Pedido>
+                    {
+                    mesas.map((mesa,i) => (
+                        <Col xs={7} key={i}>
                             <Card style={{
                                 margin: '1rem',
                             }}>
@@ -32,190 +40,13 @@ function GarcomMesas(){
                                     display: "inline-block",
                                     fontWeight: 'bold',
                                     fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
+                                }}>Mesa {mesa.numero}</Card.Header>
                                 <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
+                                    <Button variant="sucess">Atendida</Button>
                                 </Card.Body>
                             </Card>
-                        </Pedido>
-                        <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                        <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                    </Col>
-                    <Col xs={3}>
-                        <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                        <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                        <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                    </Col>
-                    <Col xs={3}>
-                    <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                        <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                        <Pedido>
-                            <Card style={{
-                                margin: '1rem',
-                            }}>
-                                <Card.Header style={{
-                                    backgroundColor: 'white',
-                                    borderBottom: '1px solid black',
-                                    display: "inline-block",
-                                    fontWeight: 'bold',
-                                    fontSize: '2rem'
-                                }}>Pedido 1</Card.Header>
-                                <Card.Body>
-                                    <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
-                                        Pizza Calabresa
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Pronto
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Pedido>
-                    </Col>
+                        </Col>
+                    ))}
                 </Row>
             </Container>
         </Body>
