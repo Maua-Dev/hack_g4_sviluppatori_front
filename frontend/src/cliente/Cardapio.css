@@ -1,0 +1,124 @@
+
+    
+
+  .menu-container, .actions-container, h1, .menu-content{
+    display: flex; 
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .menu-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-right: -60px;
+  }
+  
+  .menu-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Forces each row to take 100% width of the container */
+    margin-bottom: 20px; /* Add some vertical space between rows */
+  }
+  
+
+  h1 {
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 60px;
+    text-shadow: 40px #0e3c12;
+  }
+  
+  .menu-container {
+    margin-bottom: 20px;
+
+  }
+  
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .menu-item {
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    border: 0,7px solid #ccc;
+    background-color: #33593778;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 24px;
+  }
+  
+  .menu-item:hover {
+    background-color: #317E39E0;
+  } 
+  .actions-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 100%;
+  }
+  
+  .action-button {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #33593778;
+    color: #fff;
+    font-size: 24px;
+    transition: background-color 0.2s, transform 0.2s;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    
+  }
+  
+  .action-button:hover {
+    background-color: #186d3d;
+    transform: scale(1.1);
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+  
+  .order-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 50px;
+    text-align: left;
+    max-width: 300px;
+  }
+  
+  .order-container h4 {
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 32px;
+  }
+  
+  .order-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .confirm-button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 20px;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  .confirm-button:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+  }
+  

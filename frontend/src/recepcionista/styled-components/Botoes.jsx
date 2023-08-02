@@ -23,9 +23,9 @@ const Botao = style.button`
     justify-content: center;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    width: 240px;
+    width: 180px;
     &:hover{
-        width: 270px
+        width: 210px;
     }
     &:disabled{
         cursor: not-allowed;

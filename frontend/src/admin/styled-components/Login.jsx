@@ -68,7 +68,8 @@ const ContainerForm = style.div`
 `;
 
 const Button = style.button`
-    width: 100%;
+    
+    width: 60%;
     background: #C7383D !important;
     color: white !important;
     border: 0px
@@ -93,12 +94,17 @@ const ContainerCard = style.div`
 `;
 
 const InputDiv = style.div`
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 5rem;
     margin-bottom: 1rem;
     border-radius: 5px;
 `;
 
 
 const InputSvg = style.div`
+    margin-left: -2.5rem;
     background: #C7383D !important;
     color: white !important;
     border: 0 !important;
