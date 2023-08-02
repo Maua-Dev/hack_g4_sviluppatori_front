@@ -1,6 +1,6 @@
 import React from 'react';
 import {Body} from '../styled-components/Body';
-import {Container, Row, Col, Card} from 'react-bootstrap';
+import {Container, Row, Col, Card, Button} from 'react-bootstrap';
 import {BotoesDiv, Botao, Redirecionar} from '../recepcionista/styled-components/Botoes';
 import {Mesa} from '../garcom/styled-components/Mesas';
 import axios from 'axios';
@@ -12,7 +12,7 @@ function GarcomPedidos(){
     React.useEffect(() => {
         axios.get('http://localhost:3001/pedidos')
         .then((response) => {
-            const pedidosFiltrados = response.data.filter((pedido) => pedido.status === "Preparação");
+            const pedidosFiltrados = response.data.filter((pedido) => pedido.status === "Pronto");
             setPedidos(pedidosFiltrados);
         }).catch((error) => {
             console.log(error);
@@ -32,7 +32,7 @@ function GarcomPedidos(){
                             </Botao>
                         </BotoesDiv>
                     </Col> 
-                    <Col xs={7}>
+                    <Col xs={3}>
                         {pedidos.map((pedido,i) => (
                             <Mesa key={i}>
                                 <Card style={{
@@ -49,13 +49,11 @@ function GarcomPedidos(){
                                         <Card.Text style={{borderBottom: "1px solid #1A623C"}}>
                                             {pedido.produtos.map((produto, i) => (
                                                 <div key={i}>
-                                                    {produto.nome}
+                                                    {produto}
                                                 </div>
                                             ))}
                                         </Card.Text>
-                                        <Card.Text>
-                                            {pedido.status}
-                                        </Card.Text>
+                                        <Button variant="success">Entregue</Button>
                                     </Card.Body>
                                 </Card>
                             </Mesa>

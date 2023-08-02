@@ -1,7 +1,7 @@
 import style from 'styled-components';
 
 const Body = style.div`
-background-color: #3C973F;
+background-color: #6BB36D;
 margin: 0;
 padding: 0;
 font-family: Arial, sans-serif;

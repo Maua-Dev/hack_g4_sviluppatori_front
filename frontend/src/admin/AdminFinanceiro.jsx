@@ -69,7 +69,7 @@ function AdminFinanceiro(){
     
                     <div>
                         <Label htmlFor="quantia">Quantia</Label>
-                        <Input type="text" value={inputQuantia} id="quantia" name="quantia"  onChange={(event) => setInputQuantia(event.target.value)}  placeholder="R$100" />
+                        <Input type="number" value={inputQuantia} id="quantia" name="quantia"  onChange={(event) => setInputQuantia(event.target.value)}  placeholder="R$100" />
                     </div>
                     <div>
                         <Label htmlFor="status">Status</Label>
@@ -89,7 +89,7 @@ function AdminFinanceiro(){
                     <NavbarD>
                     <Navbar.Brand href="/">
                         <NavbarBrandD>
-                        Sviluppatori  
+                        <img src="https://media.discordapp.net/attachments/1082483101487333499/1128395434495316089/image.png?width=705&height=662" height="120px"/>
                         </NavbarBrandD>
                     </Navbar.Brand>
                     </NavbarD>

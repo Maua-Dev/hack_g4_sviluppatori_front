@@ -11,7 +11,7 @@ function GarcomMesas(){
     React.useEffect(() => {
         axios.get('http://localhost:3001/mesas')
         .then((response) => {
-            setMesas(response.data);
+            setMesas(response.data.filter((mesa) => mesa.chamada == false))
         })});
 
     return(
@@ -30,9 +30,31 @@ function GarcomMesas(){
                     </Col> 
                     {
                     mesas.map((mesa,i) => (
-                        <Col xs={7} key={i}>
+                        ((i + 1) % 3 === 0) ? (
+                        <Row>    
+                            <Col xs={4} key={i}>
+                                <Card style={{
+                                    margin: '1rem',
+                                    width: '18rem',
+                                }}>
+                                    <Card.Header style={{
+                                        backgroundColor: 'white',
+                                        borderBottom: '1px solid black',
+                                        display: "inline-block",
+                                        fontWeight: 'bold',
+                                        fontSize: '2rem'
+                                    }}>Mesa {mesa.numero}</Card.Header>
+                                    <Card.Body>
+                                        <Button variant="success">Atendida</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                        ) : (
+                            <Col xs={4} key={i}>
                             <Card style={{
                                 margin: '1rem',
+                                width: '18rem',
                             }}>
                                 <Card.Header style={{
                                     backgroundColor: 'white',
@@ -42,10 +64,11 @@ function GarcomMesas(){
                                     fontSize: '2rem'
                                 }}>Mesa {mesa.numero}</Card.Header>
                                 <Card.Body>
-                                    <Button variant="sucess">Atendida</Button>
+                                    <Button variant="success">Atendida</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
+                        )
                     ))}
                 </Row>
             </Container>

@@ -1,7 +1,7 @@
 import style from 'styled-components';
 
 const NavbarD = style.nav`
-    background-color: #3C973F;
+    background-color: #6BB36D;
     padding: 10px;
     text-align: center;
     `;

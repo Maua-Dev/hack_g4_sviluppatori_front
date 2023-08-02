@@ -6,37 +6,57 @@ import { TextoCard, TituloCard} from './styled-components/Card';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Blueprint from "../garcom/imgs/Pizza_Pepperoni.png";
+import axios from 'axios';
 
 function Cardapio() {
-  const [selectedMenu, setSelectedMenu] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [selectedMenu, setSelectedMenu] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
   const menuOptions = ['Entradas', 'Bebidas', 'Pizzas', 'Sobremesas'];
-  const menuItems = [{
-    name: 'Pizza de Calabresa',
-    price: 30.00,
-    description: 'Pizza de calabresa com queijo, molho de tomate e orégano.',
-  }, {
-    name: 'Pizza de Frango',
-    price: 30.00,
-    description: 'Pizza de frango com queijo, molho de tomate e orégano.',
-    }, {
-    name: 'Pizza de Marguerita',
-    price: 30.00,
-    description: 'Pizza de marguerita com queijo, molho de tomate e orégano.',
-    }, {
-    name: 'Pizza de Pepperoni',
-    price: 30.00,
-    description: 'Pizza de pepperoni com queijo, molho de tomate e orégano.',
-    }, {
-    name: 'Pizza de Portuguesa',
-    price: 30.00,
-    description: 'Pizza de portuguesa com queijo, molho de tomate e orégano.',
-    }];
-    
+  const [entradas, setEntradas] = useState([]);
+  const [bebidas, setBebidas] = useState([]);
+  const [pizzas, setPizzas] = useState([]);
+  const [sobremesas, setSobremesas] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
+  
+  React.useEffect(() => {
+    axios.get('http://localhost:3001/produtos')
+      .then((response) => {
+        setEntradas(response.data.filter((produto) => produto.tipo === "Entradas"));
+        setBebidas(response.data.filter((produto) => produto.tipo === "Bebidas"));
+        setPizzas(response.data.filter((produto) => produto.tipo === "Pizzas"));
+        setSobremesas(response.data.filter((produto) => produto.tipo === "Sobremesas"));
+        setLoading(false);
+        setMenuItems(response.data.filter((produto) => produto.tipo === "Entradas"));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleMenuItemClick = (index) => {
     setSelectedMenu(index);
   };
+
+  React.useEffect(() => {
+    switch (selectedMenu) {
+      case 0: 
+        setMenuItems(entradas);
+        break;
+      case 1: 
+        setMenuItems(bebidas);
+        break;
+      case 2: 
+        setMenuItems(pizzas);
+        break;
+      case 3:
+        setMenuItems(sobremesas);
+        break;
+      default:
+        setMenuItems([]);
+        break;
+    }
+  }, [selectedMenu, entradas, bebidas, pizzas, sobremesas]);
 
   const handleMenuItemSelect = (item) => {
     setSelectedItems([...selectedItems, item]);
@@ -87,18 +107,18 @@ function Cardapio() {
                           ((index + 1) % 5 === 0) ? (
                             <div key={index} className="menu-row">
                                 
-                              <Card style={{ backgroundColor: "#abb78b", border: "0px", cursor: "pointer" }} onClick={() => handleMenuItemSelect(item.name)}>
+                              <Card style={{ backgroundColor: "#abb78b", border: "0px", cursor: "pointer", marginBottom: "16px" }} onClick={() => handleMenuItemSelect(item.name)}>
                                 <Card.Img src={Blueprint} style={{ width: "160px", marginLeft: "16px" }} alt="Pizza" />
                                 <Card.Body>
                                   <Card.Text>
                                     <TituloCard>
-                                        {item.name}
+                                        {item.nome}
                                     </TituloCard>
                                     <TextoCard>
-                                        {item.description}
+                                        {item.descricao}
                                     </TextoCard>
                                     <TextoCard>
-                                        R$ {item.price}
+                                        R$ {item.preco}
                                     </TextoCard>
                                   </Card.Text>
                                 </Card.Body>
@@ -107,18 +127,18 @@ function Cardapio() {
                             </div>
                           ) : (
                             
-                            <Card   style={{backgroundColor: "#abb78b",border: "0px", cursor: "pointer"}} onClick={() => handleMenuItemSelect(item.name)}>
+                            <Card   style={{backgroundColor: "#abb78b",border: "0px", cursor: "pointer", marginBottom: "16px"}} onClick={() => handleMenuItemSelect(item.name)}>
                             <Card.Img src={Blueprint} style={{ width: "160px", marginLeft: "16px" }} alt="Pizza" />
                             <Card.Body>
                               <Card.Text>
                                 <TituloCard>
-                                    {item.name}
+                                    {item.nome}
                                 </TituloCard>
                                 <TextoCard>
-                                    {item.description}
+                                    {item.descricao}
                                 </TextoCard>
                                 <TextoCard>
-                                    R$ {item.price}
+                                    R$ {item.preco}
                                 </TextoCard>
                               </Card.Text>
                             </Card.Body>
